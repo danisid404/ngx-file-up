@@ -1,27 +1,63 @@
 # NgxFileUp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+File uploading plugin for AngularX applications.
 
-## Development server
+# Usage
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Install
 
-## Code scaffolding
+Run `npm i ngx-file-up --save` to install and save as dependency.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Import
 
-## Build
+Add `import { NgxFileUpModule } from 'ngx-file-up'` to your app module.
+Then add `NgxFileUpModule` to ng module imports.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Usage
 
-## Running unit tests
+Use plugin as follows
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<mat-file-upload></mat-file-upload>
+```
+or
 
-## Running end-to-end tests
+```html
+<mat-file-upload
+  [labelText]="'Select a file (or multiple) to upload:'"
+  [selectButtonText]="'Choose File(s)'"
+  [selectFilesButtonType]="button"
+  [uploadButtonText]="'Submit'"
+  [uploadButtonType]="submit"
+  [allowMultipleFiles]="true"
+  [showUploadButton]="true"
+  [customSvgIcon]="'close_custom'"
+  [acceptedTypes]="'.png, .jpg, .jpeg'"
+  (uploadClicked)="onUploadClicked($event)"
+  (selectedFilesChanged)="onSelectedFilesChanged($event)"
+>
+</mat-file-upload>
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Options
 
-## Further help
+### `@Input()` Properties
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+| Directive                 | Type      | Description                                                                                                    | Default Value    |
+| ------------------------- | --------- | -------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `[labelText]`             | `string`  | The text to be displayed for the file upload label                                                             | "Select file(s)" |
+| `[selectButtonText]`      | `string`  | The text to be displayed for the button that allows the user to select file(s)                                 | "Select file(s)" |
+| `[selectFilesButtonType]` | `string`  | The HTML "type" attribute of the "Select Files" button                                                         | "button"         |
+| `[uploadButtonText]`      | `string`  | The text to be displayed for the button that allows the user to upload file(s)                                 | "Upload File(s)" |
+| `[uploadButtonType]`      | `string`  | The HTML "type" attribute of the "Upload" button                                                               | "button"         |
+| `[allowMultipleFiles]`    | `boolean` | True/false representing whether the user can select multiple files at a time                                   | false            |
+| `[showUploadButton]`      | `boolean` | True/false representing whether the "Upload" button is shown in the DOM                                        | true             |
+| `[customSvgIcon]`         | `string`  | The name of the custom svgIcon to be used as the "close" button; otherwise defaults to Material's "close" icon | null             |
+| `[acceptedTypes]`         | `string`  | The list of file types that are allowed to be uploaded                                                         | "\*.\*"          |
+
+### `@Output()` Properties
+
+| Directive                | Type                     | Description                                                                                  |
+| ------------------------ | ------------------------ | -------------------------------------------------------------------------------------------- |
+| `(uploadClicked)`        | `EventEmitter<FileList>` | Event handler that emits the list of selected files whenever the "Upload" button is clicked  |
+| `(selectedFilesChanged)` | `EventEmitter<FileList>` | Event handler that emits the list of selected files whenever the user changes file selection |
