@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "initNpmPack": "ng build ngx-file-up && cd dist/ngx-file-up && npm publish"
+    "buildPackage": "ng build ngx-file-up && cd dist/ngx-file-up && npm publish"
   },
   "private": false,
   "dependencies": {
@@ -18,7 +18,6 @@
     "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
     "@angular/forms": "~8.2.14",
-    "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",

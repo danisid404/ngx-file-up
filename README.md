@@ -2,8 +2,6 @@
 
 File uploading plugin for AngularX applications.
 
-# Usage
-
 ## Install
 
 Run `npm i ngx-file-up --save` to install and save as dependency.
@@ -20,44 +18,79 @@ Use plugin as follows
 ```html
 <ngx-file-up></ngx-file-up>
 ```
-or
-
-```html
-<ngx-file-up
-  [labelText]="'Select a file (or multiple) to upload:'"
-  [selectButtonText]="'Choose File(s)'"
-  [selectFilesButtonType]="button"
-  [uploadButtonText]="'Submit'"
-  [uploadButtonType]="submit"
-  [allowMultipleFiles]="true"
-  [showUploadButton]="true"
-  [customSvgIcon]="'close_custom'"
-  [acceptedTypes]="'.png, .jpg, .jpeg'"
-  (uploadClicked)="onUploadClicked($event)"
-  (selectedFilesChanged)="onSelectedFilesChanged($event)"
->
-</ngx-file-up>
-```
 
 ## Options
 
-### `@Input()` Properties
+### Directives
 
-| Directive                 | Type      | Description                                                                                                    | Default Value    |
-| ------------------------- | --------- | -------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `[labelText]`             | `string`  | The text to be displayed for the file upload label                                                             | "Select file(s)" |
-| `[selectButtonText]`      | `string`  | The text to be displayed for the button that allows the user to select file(s)                                 | "Select file(s)" |
-| `[selectFilesButtonType]` | `string`  | The HTML "type" attribute of the "Select Files" button                                                         | "button"         |
-| `[uploadButtonText]`      | `string`  | The text to be displayed for the button that allows the user to upload file(s)                                 | "Upload File(s)" |
-| `[uploadButtonType]`      | `string`  | The HTML "type" attribute of the "Upload" button                                                               | "button"         |
-| `[allowMultipleFiles]`    | `boolean` | True/false representing whether the user can select multiple files at a time                                   | false            |
-| `[showUploadButton]`      | `boolean` | True/false representing whether the "Upload" button is shown in the DOM                                        | true             |
-| `[customSvgIcon]`         | `string`  | The name of the custom svgIcon to be used as the "close" button; otherwise defaults to Material's "close" icon | null             |
-| `[acceptedTypes]`         | `string`  | The list of file types that are allowed to be uploaded                                                         | "\*.\*"          |
+| Option            | Type         | Default Val  | Description                                         |
+| ----------------- | ------------ | ------------ | --------------------------------------------------- |
+| [prompt]          | string       | Select Files | Prompt message displayed before files select button |
+| [promptAllow]     | boolean      | false        | Hide or show prompt message                         |
+| [selectBtn]       | string       | Select       | The text inside files select button                 |
+| [uploadBtn]       | string       | Up           | The text inside files upload button                 |
+| [uploadBtnAllow]  | boolean      | tr           | Hide or show upload button                          |
+| [multiple]        | boolean      | true         | Allow multiple files                                |
+| [types]           | string       | "\*.\*"      | The list of allowed file types                      |
+| [ngxTriggerReset] | EventEmitter |              | Event received as input to trigger plugin reset     |
 
-### `@Output()` Properties
+### Events
 
-| Directive                | Type                     | Description                                                                                  |
-| ------------------------ | ------------------------ | -------------------------------------------------------------------------------------------- |
-| `(uploadClicked)`        | `EventEmitter<FileList>` | Event handler that emits the list of selected files whenever the "Upload" button is clicked  |
-| `(selectedFilesChanged)` | `EventEmitter<FileList>` | Event handler that emits the list of selected files whenever the user changes file selection |
+| Event                  | Type                     | Description                                                              |
+| ---------------------- | ------------------------ | ------------------------------------------------------------------------ |
+| `(ngxTriggerUpload)`   | `EventEmitter<FileList>` | Event handler to emit selected files when the "Upload" button is clicked |
+| `(ngxTriggerSelected)` | `EventEmitter<FileList>` | Event handler to emit selected files when files are selected             |
+
+### Usage [ngxTriggerReset]
+
+`app.component.html`
+
+```html
+<div>
+  <ngx-file-up
+    [prompt]="'Upload Files Here'"
+    [promptAllow]="true"
+    [selectBtn]="'Choose File(s)'"
+    [uploadBtn]="'Submit'"
+    [multiple]="true"
+    [uploadBtnAllow]="true"
+    [ngxTriggerReset]="emitter"
+  >
+  </ngx-file-up>
+  <br />
+  <br />
+  <div>This button will emit an event to remove all the selected files.</div>
+  <br />
+  <button class="ripple" (click)="resetFiles()" (ngxFileUpReset)="checkevent()">
+    Reset Files
+  </button>
+</div>
+```
+
+`app.component.ts`
+
+```
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+
+  @Output() emitter: EventEmitter<any> = new EventEmitter();
+
+  constructor() { }
+
+  resetFiles() {
+    this.emitter.emit();
+  }
+
+}
+
+```
+
+# Credit
+
+Credit goes to "bjsawyer" for creating "mat-file-upload"

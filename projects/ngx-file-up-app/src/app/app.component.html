@@ -1,13 +1,12 @@
 <div>
-  <ngx-file-up [labelText]="'Select a file (or multiple) to upload:'" [selectButtonText]="'Choose File(s)'"
-    [uploadButtonText]="'Submit'" [allowMultipleFiles]="true" [showUploadButton]="true" [customSvgIcon]="'close_custom'"
-    [ngxResetFilesEvent]='emitter'>
+  <ngx-file-up [prompt]="'Upload Files Here'" [promptAllow]="true" [selectBtn]="'Choose File(s)'" [uploadBtn]="'Submit'"
+    [multiple]="true" [uploadBtnAllow]="true" [ngxTriggerReset]='emitter'>
   </ngx-file-up>
   <br />
   <br />
   <div>This button will emit an event to remove all the selected files.</div>
   <br />
-  <button mat-raised-button color="primary" (click)="resetFiles()" (ngxFileUpReset)="checkevent()">
+  <button class="ripple" (click)="resetFiles()">
     Reset Files
   </button>
 </div>

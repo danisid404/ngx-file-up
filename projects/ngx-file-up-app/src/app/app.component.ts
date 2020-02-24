@@ -15,8 +15,4 @@ export class AppComponent {
     this.emitter.emit();
   }
 
-  checkevent() {
-    console.log('trigger');
-  }
-
 }
