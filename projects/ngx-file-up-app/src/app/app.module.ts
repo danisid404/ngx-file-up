@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxFileUpModule } from 'projects/ngx-file-up/src/public-api';
+// import { NgxFileUpModule } from 'projects/ngx-file-up/src/public-api';
+import { NgxFileUpModule } from 'ngx-file-up';
 
 import { AppComponent } from './app.component';
 

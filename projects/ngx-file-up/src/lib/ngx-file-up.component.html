@@ -1,5 +1,5 @@
 <div class="file-input-text lh-3" *ngIf="promptAllow">{{ prompt }}</div>
-<button class="file-input-button ripple" (click)="fileInput.click()" [attr.aria-label]="selectBtn">
+<button class="file-input-button ripple" [type]="'button'" (click)="fileInput.click()" [attr.aria-label]="selectBtn">
   <span>{{ selectBtn }}</span>
   <input #fileInput class="d-none" type="file" [accept]="types" [multiple]="multiple"
     (change)="filesChanged($event.target.files)" />
@@ -17,7 +17,7 @@
   <button (click)="filesChanged(null)" type="button" class="ripple" aria-label="Remove Selected File(s)">
     Clear
   </button>&nbsp;
-  <button class="file-input-button ripple" [disabled]="!selectedFiles" (click)="uploadFiles()" *ngIf="uploadBtnAllow"
+  <button class="file-input-button ripple" [type]="'button'" [disabled]="!selectedFiles" (click)="uploadFiles()" *ngIf="uploadBtnAllow"
     [attr.aria-label]="uploadBtn">
     {{ uploadBtn }}
   </button>

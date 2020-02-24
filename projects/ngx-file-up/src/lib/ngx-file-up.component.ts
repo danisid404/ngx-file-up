@@ -15,7 +15,7 @@ export class NgxFileUpComponent implements OnInit {
   @Input() uploadBtnAllow = true;
   @Input() multiple = true;
   @Input() types = '*.*';
-  @Input() ngxTriggerReset: EventEmitter<any>;
+  @Input() ngxTriggerReset?: EventEmitter<any>;
   @Output() ngxTriggerUpload: EventEmitter<FileList> = new EventEmitter<FileList>();
   @Output() ngxTriggerSelected: EventEmitter<FileList> = new EventEmitter<FileList>();
 
@@ -23,11 +23,13 @@ export class NgxFileUpComponent implements OnInit {
   selectedFiles: FileList;
 
   ngOnInit() {
-    this.ngxTriggerReset.subscribe(() => {
-      if (this.selectedFiles && this.selectedFiles.length > 0) {
-        this.filesChanged(null);
-      }
-    });
+    if (this.ngxTriggerReset) {
+      this.ngxTriggerReset.subscribe(() => {
+        if (this.selectedFiles && this.selectedFiles.length > 0) {
+          this.filesChanged(null);
+        }
+      });
+    }
   }
 
   filesChanged(files?: FileList): void {
