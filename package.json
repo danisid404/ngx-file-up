@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "buildNgxPackage": "ng build ngx-file-up"
+    "initNpmPack": "ng build ngx-file-up && cd dist/ngx-file-up && npm publish"
   },
   "private": false,
   "dependencies": {
