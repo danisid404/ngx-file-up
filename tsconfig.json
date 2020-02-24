@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-file-up": [
+        "dist/ngx-file-up"
+      ],
+      "ngx-file-up/*": [
+        "dist/ngx-file-up/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
