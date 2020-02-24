@@ -1,16 +1,27 @@
-<span class="file-input-text">{{ labelText }}</span>
-<button mat-button [type]="selectFilesButtonType" color="primary" class="file-input-button" (click)="fileInput.click()"
-  [attr.aria-label]="selectButtonText">
+<div class="file-input-text lh-3">{{ labelText }}</div>
+<button mat-raised-button [type]="selectFilesButtonType" color="primary" class="file-input-button"
+  (click)="fileInput.click()" [attr.aria-label]="selectButtonText">
   <span>{{ selectButtonText }}</span>
   <input #fileInput type="file" style="display: none" [accept]="acceptedTypes" [multiple]="allowMultipleFiles"
     (change)="filesChanged($event.target.files)" />
 </button>
-<button mat-raised-button [type]="uploadButtonType" color="primary" class="file-input-button"
-  [disabled]="!selectedFiles" (click)="uploadFiles()" *ngIf="showUploadButton" [attr.aria-label]="uploadButtonText">
-  {{ uploadButtonText }}
-</button>
-<span class="file-input-text">{{ selectedFileText }}</span>
-<button mat-icon-button (click)="filesChanged(null)" type="button" aria-label="Remove Selected File(s)">
-  <mat-icon *ngIf="!customSvgIcon">close</mat-icon>
-  <mat-icon *ngIf="customSvgIcon" [svgIcon]="customSvgIcon"></mat-icon>
-</button>
+<div *ngIf="selectedFiles && selectedFiles.length > 0">
+  <div class="file-input-text" *ngIf="selectedFiles && selectedFiles.length > 0">
+    <ol>
+      <li *ngFor="let item of selectedFiles" class="pos-rel pd-r-15 lh-2p5">
+        <div class="wrd-b-a">
+          {{item.name}}
+        </div>
+        <!-- <span class="pos-abs rt-0 tp-0 fs-20 lh-2" (click)="removeFile(item)">&times;</span> -->
+      </li>
+    </ol>
+  </div>
+  <button mat-raised-button color="primary" (click)="filesChanged(null)" type="button"
+    aria-label="Remove Selected File(s)">
+    Clear
+  </button>&nbsp;
+  <button mat-raised-button [type]="uploadButtonType" color="primary" class="file-input-button"
+    [disabled]="!selectedFiles" (click)="uploadFiles()" *ngIf="showUploadButton" [attr.aria-label]="uploadButtonText">
+    {{ uploadButtonText }}
+  </button>
+</div>

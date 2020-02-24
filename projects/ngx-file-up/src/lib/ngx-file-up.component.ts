@@ -1,20 +1,10 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line: component-selector
   selector: 'ngx-file-up',
   templateUrl: './ngx-file-up.component.html',
-  styles: [
-    '.file-input-button { margin-right: 8px !important }',
-    '.file-input-text { font-size: 14px !important; margin-right: 8px !important }'
-  ]
+  styleUrls: ['./ngx-file-up.component.css']
 })
 export class NgxFileUpComponent {
 
@@ -32,21 +22,10 @@ export class NgxFileUpComponent {
 
   @ViewChild('fileInput', { static: false }) fileInputRef: ElementRef;
   selectedFiles: FileList;
-  selectedFileText = '';
 
   filesChanged(files?: FileList): void {
     this.selectedFiles = files;
-    this.selectedFilesChanged.emit(this.selectedFiles);
-    if (this.selectedFiles) {
-      const numSelectedFiles = this.selectedFiles.length;
-      this.selectedFileText =
-        numSelectedFiles === 1
-          ? this.selectedFiles[0].name
-          : `${numSelectedFiles} files selected`;
-    } else {
-      this.selectedFileText = '';
-      this.resetFileInput();
-    }
+    (files) ? this.selectedFilesChanged.emit(this.selectedFiles) : this.resetFileInput();
   }
 
   uploadFiles(): void {

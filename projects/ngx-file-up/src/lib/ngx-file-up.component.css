@@ -1,0 +1,49 @@
+.file-input-button {
+  margin-right: 8px !important;
+}
+
+.file-input-text {
+  font-size: 14px !important;
+  margin-right: 8px !important;
+}
+
+.fs-20{
+    font-size: 20px !important;
+}
+
+.lh-2{
+    line-height: 2 !important;
+}
+
+.lh-2p5{
+    line-height: 2.5 !important;
+}
+
+.lh-3{
+    line-height: 3 !important;
+}
+
+.pos-rel{
+    position: relative !important;
+}
+
+.pos-abs{
+    position: absolute !important;
+}
+
+.rt-0{
+    right: 0 !important;
+}
+
+.tp-0{
+    top: 0 !important;
+}
+
+.pd-r-15{
+    padding-right: 15px !important;
+}
+
+.wrd-b-a{
+    word-break: break-all !important;
+}
+
