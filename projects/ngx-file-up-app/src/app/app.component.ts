@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +6,17 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
-  ) {
-    this.matIconRegistry.addSvgIcon(
-      'close_custom',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/close.svg')
-    );
+
+  @Output() emitter: EventEmitter<any> = new EventEmitter();
+
+  constructor() { }
+
+  resetFiles() {
+    this.emitter.emit();
   }
+
+  checkevent() {
+    console.log('trigger');
+  }
+
 }

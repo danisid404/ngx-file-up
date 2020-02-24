@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxFileUpModule } from 'ngx-file-up';
+import { NgxFileUpModule } from 'projects/ngx-file-up/src/public-api';
 
 import { AppComponent } from './app.component';
 

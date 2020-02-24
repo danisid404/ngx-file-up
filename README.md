@@ -18,12 +18,12 @@ Then add `NgxFileUpModule` to ng module imports.
 Use plugin as follows
 
 ```html
-<mat-file-upload></mat-file-upload>
+<ngx-file-up></ngx-file-up>
 ```
 or
 
 ```html
-<mat-file-upload
+<ngx-file-up
   [labelText]="'Select a file (or multiple) to upload:'"
   [selectButtonText]="'Choose File(s)'"
   [selectFilesButtonType]="button"
@@ -36,7 +36,7 @@ or
   (uploadClicked)="onUploadClicked($event)"
   (selectedFilesChanged)="onSelectedFilesChanged($event)"
 >
-</mat-file-upload>
+</ngx-file-up>
 ```
 
 ## Options

@@ -2,9 +2,7 @@
 
 body {
   margin: 0;
-}
-
-.app-padding {
+  font-family: Roboto,"Helvetica Neue",sans-serif !important;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px
