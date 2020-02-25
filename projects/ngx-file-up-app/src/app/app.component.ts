@@ -11,6 +11,14 @@ export class AppComponent {
 
   constructor() { }
 
+  triggerOnSelected(files?: FileList) {
+    console.log(files);
+  }
+
+  triggerOnUpload(files?: FileList) {
+    console.log(files);
+  }
+
   resetFiles() {
     this.emitter.emit();
   }

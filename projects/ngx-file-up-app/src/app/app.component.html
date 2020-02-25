@@ -1,6 +1,7 @@
 <div>
   <ngx-file-up [prompt]="'Upload Files Here'" [promptAllow]="true" [selectBtn]="'Choose File(s)'" [uploadBtn]="'Submit'"
-    [multiple]="true" [uploadBtnAllow]="true" [ngxTriggerReset]='emitter'>
+    [multiple]="true" [uploadBtnAllow]="true" [types]="'.pdf, .jpg, .png'" [ngxTriggerReset]='emitter'
+    (ngxTriggerSelected)="triggerOnSelected($event)" (ngxTriggerUpload)="triggerOnUpload($event)">
   </ngx-file-up>
   <br />
   <br />

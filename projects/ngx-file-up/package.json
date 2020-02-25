@@ -1,6 +1,6 @@
 {
   "name": "ngx-file-up",
-  "version": "1.4.4",
+  "version": "1.4.7",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
